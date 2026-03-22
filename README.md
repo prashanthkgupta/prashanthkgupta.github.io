@@ -1,43 +1,40 @@
-# Astro Starter Kit: Minimal
+# Prashant Kumar Gupta — Portfolio
 
-```sh
-npm create astro@latest -- --template minimal
+Personal portfolio website showcasing my experience, skills, and background as a software engineer.
+
+**Live:** [prashanthkgupta.github.io/portfolio](https://prashanthkgupta.github.io/portfolio/)
+
+## About Me
+
+Senior Software Engineer III at **Expedia Group**, working on the Order Management System (OMS) that powers bookings across Expedia's global platform.
+
+7+ years of experience building and scaling distributed systems at companies like **MakeMyTrip**, **Surewaves MediaTech**, and **TCS**. My work spans microservice architecture, Elasticsearch optimization, performance engineering, and large-scale platform consolidation.
+
+## Tech Stack
+
+**Languages:** Kotlin, Java, Python, C#, PHP, C++, C
+**Frameworks:** Spring Boot, Django, Flask, Laravel, ASP.NET Core
+**Databases:** Elasticsearch, MySQL, MongoDB, Redis, Couchbase, Aurora Serverless
+**Tools:** Docker, Jenkins, Git, Bash, gRPC, Protocol Buffers
+**AWS:** EC2, S3, RDS, Lambda, IAM, ECS, EKS, DynamoDB, Kinesis
+
+## Built With
+
+- [Astro](https://astro.build) — Static site generator
+- [Tailwind CSS v4](https://tailwindcss.com) — Utility-first styling
+- [GitHub Pages](https://pages.github.com) — Hosting & deployment
+
+## Development
+
+```bash
+npm install       # Install dependencies
+npm run dev       # Start dev server at localhost:4321/portfolio
+npm run build     # Build for production
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Connect
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [GitHub](https://github.com/prashanthkgupta)
+- [LinkedIn](https://linkedin.com/in/prashanthkgupta)
+- [LeetCode](https://leetcode.com/prashanthkgupta)
+- Email: prashanthkgupta@gmail.com
