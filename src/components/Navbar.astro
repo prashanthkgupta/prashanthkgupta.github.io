@@ -1,0 +1,109 @@
+---
+import { personal } from '../data/resume';
+
+const navLinks = [
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Education', href: '#education' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+
+<nav
+  class="fixed top-0 left-0 right-0 z-50 border-b border-border bg-bg/80 backdrop-blur-md"
+>
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <a href="#hero" class="text-lg font-bold text-accent tracking-tight">
+      PKG
+    </a>
+
+    <div class="hidden items-center gap-8 md:flex">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-sm text-text-muted transition-colors hover:text-accent"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href={personal.resumeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-lg border border-accent px-4 py-1.5 text-sm font-medium text-accent transition-colors hover:bg-accent hover:text-bg"
+      >
+        Resume
+      </a>
+    </div>
+
+    <button
+      id="mobile-menu-btn"
+      class="flex flex-col gap-1.5 md:hidden"
+      aria-label="Toggle menu"
+    >
+      <span class="block h-0.5 w-6 bg-text-muted transition-all" id="bar1"
+      ></span>
+      <span class="block h-0.5 w-6 bg-text-muted transition-all" id="bar2"
+      ></span>
+      <span class="block h-0.5 w-6 bg-text-muted transition-all" id="bar3"
+      ></span>
+    </button>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="hidden flex-col gap-4 border-t border-border px-6 py-6 md:hidden"
+  >
+    {
+      navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="mobile-link text-text-muted transition-colors hover:text-accent"
+        >
+          {link.label}
+        </a>
+      ))
+    }
+    <a
+      href={personal.resumeUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mobile-link w-fit rounded-lg border border-accent px-4 py-1.5 text-sm font-medium text-accent transition-colors hover:bg-accent hover:text-bg"
+    >
+      Resume
+    </a>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn')!;
+  const menu = document.getElementById('mobile-menu')!;
+  const bar1 = document.getElementById('bar1')!;
+  const bar2 = document.getElementById('bar2')!;
+  const bar3 = document.getElementById('bar3')!;
+
+  let open = false;
+
+  btn.addEventListener('click', () => {
+    open = !open;
+    menu.classList.toggle('hidden', !open);
+    menu.classList.toggle('flex', open);
+    bar1.style.transform = open ? 'rotate(45deg) translate(4px, 4px)' : '';
+    bar2.style.opacity = open ? '0' : '1';
+    bar3.style.transform = open ? 'rotate(-45deg) translate(4px, -4px)' : '';
+  });
+
+  document.querySelectorAll('.mobile-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      open = false;
+      menu.classList.add('hidden');
+      menu.classList.remove('flex');
+      bar1.style.transform = '';
+      bar2.style.opacity = '1';
+      bar3.style.transform = '';
+    });
+  });
+</script>

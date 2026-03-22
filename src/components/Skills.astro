@@ -1,0 +1,38 @@
+---
+import { skills } from '../data/resume';
+---
+
+<section id="skills" class="px-6 py-24">
+  <div class="mx-auto max-w-4xl">
+    <div class="animate-on-scroll">
+      <h2
+        class="mb-2 text-sm font-medium tracking-widest text-accent uppercase"
+      >
+        Skills
+      </h2>
+      <h3 class="mb-12 text-3xl font-bold md:text-4xl">Tech Stack</h3>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        skills.map((group, i) => (
+          <div
+            class="animate-on-scroll rounded-xl border border-border bg-bg-card p-6 transition-colors hover:border-accent/30 hover:bg-bg-card-hover"
+            style={`animation-delay: ${i * 80}ms`}
+          >
+            <h4 class="mb-4 text-sm font-semibold tracking-wide text-accent uppercase">
+              {group.category}
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              {group.items.map((item) => (
+                <span class="rounded-md bg-bg px-3 py-1 text-sm text-text-muted border border-border">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
