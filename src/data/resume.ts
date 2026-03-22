@@ -7,7 +7,7 @@ export const personal = {
   phone: '+91 9889059224',
   tagline:
     'Backend engineer building high-scale distributed systems. Passionate about performance, clean architecture, and shipping impactful products.',
-  resumeUrl: '/portfolio/Prashant_Gupta.pdf',
+  resumeUrl: '/Prashant_Gupta.pdf',
   socials: {
     github: 'https://github.com/prashanthkgupta',
     linkedin: 'https://linkedin.com/in/prashanthkgupta',
