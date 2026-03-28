@@ -8,8 +8,11 @@ interface Props {
 
 const {
   title = 'Prashant Kumar Gupta — Software Engineer',
-  description = 'Senior Software Engineer building high-scale distributed systems at Expedia Group. Portfolio showcasing experience, skills, and projects.',
+  description = 'Senior Software Engineer building high-scale distributed systems at Expedia Group. 7+ years of experience in microservice architecture, performance engineering, and distributed systems.',
 } = Astro.props;
+
+const siteUrl = 'https://prashanthkgupta.github.io';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
 ---
 
 <!doctype html>
@@ -20,23 +23,51 @@ const {
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="Prashant Kumar Gupta" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
     <title>{title}</title>
+
+    <noscript>
+      <style>
+        .animate-on-scroll {
+          opacity: 1 !important;
+        }
+      </style>
+    </noscript>
   </head>
   <body class="bg-bg text-text min-h-screen">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only fixed top-4 left-4 z-[100] rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-bg focus:outline-none"
+    >
+      Skip to content
+    </a>
     <slot />
     <script>
-      const observer = new IntersectionObserver(
+      const animObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
+              const el = entry.target as HTMLElement;
+              const delay = parseInt(el.dataset.delay || '0', 10);
+              if (delay > 0) {
+                setTimeout(() => el.classList.add('visible'), delay);
+              } else {
+                el.classList.add('visible');
+              }
+              animObserver.unobserve(el);
             }
           });
         },
@@ -44,8 +75,33 @@ const {
       );
 
       document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-        observer.observe(el);
+        animObserver.observe(el);
       });
+
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      const spyObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              navLinks.forEach((link) => {
+                const el = link as HTMLElement;
+                if (el.dataset.section === entry.target.id) {
+                  el.classList.add('text-accent', 'nav-active');
+                  el.classList.remove('text-text-muted');
+                } else {
+                  el.classList.remove('text-accent', 'nav-active');
+                  el.classList.add('text-text-muted');
+                }
+              });
+            }
+          });
+        },
+        { threshold: 0.2, rootMargin: '-80px 0px -50% 0px' }
+      );
+
+      sections.forEach((section) => spyObserver.observe(section));
     </script>
   </body>
 </html>

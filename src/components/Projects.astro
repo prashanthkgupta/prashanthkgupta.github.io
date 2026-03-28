@@ -1,0 +1,42 @@
+---
+import { projects } from '../data/resume';
+---
+
+<section id="projects" class="px-6 py-24">
+  <div class="mx-auto max-w-5xl">
+    <div class="animate-on-scroll">
+      <h2
+        class="mb-2 text-sm font-medium tracking-widest text-accent uppercase"
+      >
+        Projects
+      </h2>
+      <h3 class="mb-12 text-3xl font-bold md:text-4xl">What I've Built</h3>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        projects.map((project, i) => (
+          <div
+            class="animate-on-scroll flex flex-col rounded-xl border border-border bg-bg-card p-6 transition-colors hover:border-accent/30 hover:bg-bg-card-hover"
+            data-delay={i * 80}
+          >
+            <span class="mb-2 text-xs font-medium text-accent">
+              {project.company}
+            </span>
+            <h4 class="mb-3 text-lg font-bold text-text">{project.title}</h4>
+            <p class="mb-4 flex-1 text-sm leading-relaxed text-text-muted">
+              {project.description}
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              {project.tech.map((t) => (
+                <span class="rounded-md border border-border bg-bg px-2 py-0.5 text-xs text-text-muted">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -5,7 +5,9 @@ const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Education', href: '#education' },
+  { label: 'Achievements', href: '#achievements' },
   { label: 'Contact', href: '#contact' },
 ];
 ---
@@ -23,7 +25,8 @@ const navLinks = [
         navLinks.map((link) => (
           <a
             href={link.href}
-            class="text-sm text-text-muted transition-colors hover:text-accent"
+            class="nav-link text-sm text-text-muted transition-colors hover:text-accent"
+            data-section={link.href.slice(1)}
           >
             {link.label}
           </a>
@@ -43,6 +46,7 @@ const navLinks = [
       id="mobile-menu-btn"
       class="flex flex-col gap-1.5 md:hidden"
       aria-label="Toggle menu"
+      aria-expanded="false"
     >
       <span class="block h-0.5 w-6 bg-text-muted transition-all" id="bar1"
       ></span>
@@ -89,6 +93,7 @@ const navLinks = [
 
   btn.addEventListener('click', () => {
     open = !open;
+    btn.setAttribute('aria-expanded', String(open));
     menu.classList.toggle('hidden', !open);
     menu.classList.toggle('flex', open);
     bar1.style.transform = open ? 'rotate(45deg) translate(4px, 4px)' : '';
@@ -99,6 +104,7 @@ const navLinks = [
   document.querySelectorAll('.mobile-link').forEach((link) => {
     link.addEventListener('click', () => {
       open = false;
+      btn.setAttribute('aria-expanded', 'false');
       menu.classList.add('hidden');
       menu.classList.remove('flex');
       bar1.style.transform = '';
